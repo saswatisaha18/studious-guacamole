@@ -1,0 +1,31 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Packages
+```{r setup}
+library(ggplot2)
+library(readr)
+library(haven)
+```
+
+
+
+Data
+```{r}
+
+dmae <- read_sas("https://github.com/philbowsher/Foundation-of-the-R-Workflow-workshop-2019-09-06/raw/master/Examples/data/dmae.sas7bdat", NULL)
+dmae
+```
+
+
+Viz
+```{r}
+dmae %>%
+ ggplot() +
+ aes(x = RACE, fill = ARM, weight = AGE) +
+ geom_bar() +
+ scale_fill_hue(direction = 1) +
+ theme_minimal()
+```
